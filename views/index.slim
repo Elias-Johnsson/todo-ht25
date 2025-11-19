@@ -1,1 +1,15 @@
+form action="/todos/delete" method="post"
+      input type="text" name="new_name" placeholder="Namn"
+      input type="text" name="new_description" placeholder="Description"
+      input type="submit" name="Lägg till"
+
+- @todos.each do |todo|
+    hr
+    h3 #{todo["id"]} #{todo["name"]}
+    p #{todo["desc"]}
+    form action="/todos/delete" method="post"
+        input type="submit" name="to_delete" value="Radera"
+    hr
+
+
 
