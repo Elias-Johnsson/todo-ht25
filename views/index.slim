@@ -1,14 +1,16 @@
-form action="/todos/delete" method="post"
+form action="/todos" method="post"
       input type="text" name="new_name" placeholder="Namn"
       input type="text" name="new_description" placeholder="Description"
       input type="submit" name="Lägg till"
 
-- @todos.each do |todo|
+- @items.each do |todo|
     hr
     h3 #{todo["id"]} #{todo["name"]}
     p #{todo["desc"]}
-    form action="/todos/delete" method="post"
-        input type="submit" name="to_delete" value="Radera"
+    form action="/todos/#{todo["id"]}/delete" method="post"
+        input type="submit" value="Radera"
+    form action='/todos/#{todo["id"]}/edit' method="get"
+        input type="submit" value="Redigera"
     hr
 
 

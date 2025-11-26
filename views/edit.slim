@@ -1,0 +1,6 @@
+h2 Uppdatera din frukt 
+
+form action="/todos/#{@edited["id"]}/update" method="post" 
+    input type="text" name="name" value="#{@edited["name"]}"
+    input type="number" name="amount" value="#{@edited["amount"]}"
+    input type="submit" value="Updatera"
