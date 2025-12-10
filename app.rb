@@ -13,6 +13,7 @@ end
 get('/todos') do
   @items = db.execute("SELECT * FROM todos")
   id = params[:id].to_i
+  p id
   name = params[:name]
   desc = params[:desc]
   slim(:index)
@@ -27,21 +28,20 @@ end
 
 get('/todos/:id/edit') do
   id = params[:id].to_i
-  @edited = db.execute("SELECT * FROM todos WHERE id = ?",[id])
+  @to_edit = db.execute("SELECT * FROM todos WHERE id = ?",[id]).first
   slim(:edit)
 end
 
 post('/todos/:id/update') do
   id = params[:id].to_i
-  name = params[:name]
-  desc = params[:desc]
+  name = params["name"]
+  desc = params["desc"]
   db.execute("UPDATE todos SET name= ?, desc=? WHERE id= ?",[name,desc,id])
   redirect('/todos')
 end
 
 post('/todos/:id/delete') do
   id = params[:id].to_i
-  p id
   db.execute("DELETE FROM todos WHERE id = ?",[id])
   redirect('/todos')
 end

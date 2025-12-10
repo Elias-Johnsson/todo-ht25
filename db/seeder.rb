@@ -1,6 +1,6 @@
 require 'sqlite3'
 
-db = SQLite3::Database.new("db/todos.db")
+db = SQLite3::Database.new("todos.db")
 
 
 def seed!(db)
@@ -22,13 +22,13 @@ def create_tables(db)
   db.execute('CREATE TABLE todos (
               id INTEGER PRIMARY KEY AUTOINCREMENT,
               name TEXT NOT NULL, 
-              desc TEXT)')
+              desc TEXT,
+              status INTEGER)')
 end
 
 def populate_tables(db)
-  db.execute('INSERT INTO todos (name, desc) VALUES ("Köp mjölk", "3 liter mellanmjölk, eko")')
-  db.execute('INSERT INTO todos (name, desc) VALUES ("Köp julgran", "En rödgran")')
-  db.execute('INSERT INTO todos (name, desc) VALUES ("Pynta gran", "Glöm inte lamporna i granen och tomten")')
+  db.execute('INSERT INTO todos (name, desc, status) VALUES ("Köp mjölk", "3 liter mellanmjölk, eko", 0)')
+  db.execute('INSERT INTO todos (name, desc, status) VALUES ("Köp julgran", "En rödgran", 0)')
+  db.execute('INSERT INTO todos (name, desc, status) VALUES ("Pynta gran", "Glöm inte lamporna i granen och tomten", 0)')
 end
-
 seed!(db)

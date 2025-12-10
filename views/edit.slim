@@ -1,6 +1,6 @@
-h2 Uppdatera din frukt 
+h2 Uppdatera din Todo
 
-form action="/todos/#{@edited["id"]}/update" method="post" 
-    input type="text" name="name" value="#{@edited["name"]}"
-    input type="number" name="amount" value="#{@edited["amount"]}"
+form action="/todos/#{@to_edit['id']}/update" method="post" 
+    input type="text" name="name" value="#{@to_edit["name"]}"
+    input type="text" name="desc" value="#{@to_edit["desc"]}"
     input type="submit" value="Updatera"
